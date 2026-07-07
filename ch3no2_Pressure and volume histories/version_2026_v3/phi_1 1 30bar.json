@@ -1,0 +1,108 @@
+{
+    "timing_parameters": {
+        "t_com": 46.0
+    },
+    "data_columns": {
+        "time": "Time(msec)",
+        "temperature": " Temperature(K)",
+        "pressure": " Pressure(bar)"
+    },
+    "file_specifications": {
+        "two_stage": {
+                "directory": "UCONN_nonreactive",
+            "files": [
+                {"name": "UCONN_2.053bar_373K.csv", "idt_1st": 61.55, "idt_total": 63.56},
+                {"name": "UCONN_1.8435bar_373K.csv", "idt_1st": 25.12, "idt_total": 29.28},
+                {"name": "UCONN_1.6171bar_373K.csv", "idt_1st": 10.87, "idt_total": 16.61}
+            ]
+        },
+        "single_stage": {
+            "directory": "UCONN_nonreactive",
+            "files": [
+                {"name": "UCONN_0.8415bar_413K.csv", "idt_one": 19.95},
+                {"name": "UCONN_0.7534bar_413K.csv", "idt_one": 13.15},
+                {"name": "UCONN_0.6780bar_413K.csv", "idt_one": 8.2}
+            ]
+        },
+        "ntc_region": {
+            "directory": "UCONN_nonreactive",
+            "files": [
+                {"name": "UCONN_1.3454bar_373K.csv",  "idt_ntc": 12.67},
+                {"name": "UCONN_1.1250bar_373K.csv", "idt_ntc": 16.29},
+                {"name": "UCONN_0.9069bar_373K.csv", "idt_ntc": 27.5},
+                {"name": "UCONN_0.7826bar_373K.csv", "idt_ntc": 35.3},
+                {"name": "UCONN_0.7093bar_373K.csv", "idt_ntc": 35.38},
+                {"name": "UCONN_0.6434bar_373K.csv", "idt_ntc": 30.08}
+            ]
+        },
+        "dp_optimization": {
+            "initial_temperature": [ 665.0846, 685.233, 713.3144, 741.4719],
+            "initial_pressure": [ 20.08, 20.07, 19.94, 19.84],
+            "D_p_actual": [ 4.6268, 3.753, 2.6202, 1.5549]
+        }
+    },
+    "initial_parameters": {
+        "A1": 1.60e-07,
+        "n1": -0.50,
+        "E1": 14000,
+        "Ah": 1.75e-03,
+        "nh": -0.120,
+        "Eh": 10000.0,
+        "Teq": 750.0,
+        "k": 0.028,
+        "w": -1.50,
+        "C0": 1500.0,
+        "xf": 1.0
+    },
+    "parameter_spaces": {
+        "step1": [
+            {"name": "A1", "type": "real", "low": 1e-9, "high": 1e-3},
+            {"name": "n1", "type": "real", "low": -2.0, "high": -0.1},
+            {"name": "E1", "type": "real", "low": 1e3, "high": 5e4}
+        ],
+        "step2": [
+            {"name": "Ah", "type": "real", "low": 1e-8, "high": 1e-3},
+            {"name": "nh", "type": "real", "low": -3.0, "high": -0.1},
+            {"name": "Eh", "type": "real", "low": 1e2, "high": 5e5}
+        ],
+        "step3": [
+            {"name": "Teq", "type": "real", "low": 700, "high": 900},
+            {"name": "k", "type": "real", "low": 0.01, "high": 0.1},
+            {"name": "w", "type": "real", "low": -5.0, "high": -0.01}
+        ],
+        "step4": [
+            {"name": "C0", "type": "real", "low": 1000.0, "high": 10000},
+            {"name": "xf", "type": "real", "low": 0.8, "high": 1.2}
+        ]
+    },
+    "optimization_settings": {
+        "genetic_algorithm": {
+            "population_size": 50,
+            "num_generations": 200,
+            "mutation_rate": 0.2
+        },
+        "n_calls": {
+            "step1": 100,
+            "step2": 200,
+            "step3": 100,
+            "step4": 200
+        },
+        "algorithms": {
+            "step1": {"genetic_algorithm": 1, "least_squares": 1},
+            "step2": {"genetic_algorithm": 1, "least_squares": 1},
+            "step3": {"genetic_algorithm": 1, "least_squares": 1},
+            "step4": {"genetic_algorithm": 1, "least_squares": 1}
+        },
+        "adjust_factors": {
+            "A1_factor": 1e-5,
+            "n1_factor": 1e-5,
+            "E1_factor": 1e-5,
+            "Ah_factor": 0.15,
+            "nh_factor": 0.15,
+            "Eh_factor": 0.15,
+            "Teq_factor": 0.01,
+            "k_factor": 0.5,
+            "w_factor": 0.5
+       }
+    }
+}

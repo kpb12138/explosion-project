@@ -1,0 +1,38 @@
+=== Combustion Model Optimization Log ===
+Created: 2026-07-07 23:36:35
+=====================================================
+
+
+=== Optimization Results - Step 2 ===
+Timestamp: 2026-07-07 23:36:39
+Algorithm Used: genetic_algorithm+least_squares
+Final Objective Value: 0.556452
+Optimized Parameters:
+Ah: 9.159568e-06
+nh: -1.259132
+Eh: 1.526058e+04
+
+=== Boundary Check Results - Step 2 ===
+Timestamp: 2026-07-07 23:36:39
+All parameters within normal bounds
+
+=== Optimization Results - Step 4 ===
+Timestamp: 2026-07-07 23:36:48
+Algorithm Used: genetic_algorithm
+Final Objective Value: 0.260527
+Optimized Parameters:
+A1: 3.539044e-09
+n1: -1.235895
+E1: 2.735015e+04
+Ah: 8.696765e-06
+nh: -1.120346
+Eh: 1.442807e+04
+Teq: 760.640791
+k: 0.072972
+w: -0.611071
+C0: 6752.147700
+xf: 0.934833
+
+=== Boundary Check Results - Step 4 ===
+Timestamp: 2026-07-07 23:36:48
+A1: 0.000000 at lower boundary (1e-09, 0.001)

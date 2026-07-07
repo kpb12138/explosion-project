@@ -1,0 +1,101 @@
+{
+    "timing_parameters": {
+        "t_com": 50
+    },
+    "data_columns": {
+        "time": "Time (msec)",
+        "temperature": "Temperature (K)",
+        "pressure": "Pressure (bar)"
+    },
+    "file_specifications": {
+        "two_stage": {
+                "directory": "UCONN_nonreactive",
+            "files": [
+
+            ]
+        },
+        "single_stage": {
+            "directory": "D:\\pycharm_exercise\\explosion\\ch3no2_Pressure and volume histories\\CH3NO2_inputfile",
+            "files": [
+                {"name": "CH3NO2_phi0.5_bar15_T810K_IDT109.2ms.csv", "idt_one": 109.2},
+                {"name": "CH3NO2_phi0.5_bar15_T821K_IDT55.8ms.csv", "idt_one": 55.8},
+                {"name": "CH3NO2_phi0.5_bar15_T830K_IDT27.2ms.csv", "idt_one": 27.2},
+                {"name": "CH3NO2_phi0.5_bar15_T844K_IDT12.7ms.csv", "idt_one": 12.7},
+                {"name": "CH3NO2_phi0.5_bar15_T844K_IDT16.4ms.csv", "idt_one": 16.4}
+            ]
+        },
+        "ntc_region": {
+            "directory": "UCONN_nonreactive",
+            "files": [
+
+            ]
+        },
+        "dp_optimization": {
+
+        }
+    },
+    "initial_parameters": {
+        "A1": 1.60e-07,
+        "n1": -0.50,
+        "E1": 14000,
+        "Ah": 1.75e-03,
+        "nh": -0.120,
+        "Eh": 10000.0,
+        "Teq": 750.0,
+        "k": 0.028,
+        "w": -1.50,
+        "C0": 1500.0,
+        "xf": 1.0
+    },
+    "parameter_spaces": {
+        "step1": [
+            {"name": "A1", "type": "real", "low": 1e-9, "high": 1e-3},
+            {"name": "n1", "type": "real", "low": -2.0, "high": -0.1},
+            {"name": "E1", "type": "real", "low": 1e3, "high": 5e4}
+        ],
+        "step2": [
+            {"name": "Ah", "type": "real", "low": 1e-8, "high": 1e-3},
+            {"name": "nh", "type": "real", "low": -3.0, "high": -0.1},
+            {"name": "Eh", "type": "real", "low": 1e2, "high": 5e5}
+        ],
+        "step3": [
+            {"name": "Teq", "type": "real", "low": 700, "high": 900},
+            {"name": "k", "type": "real", "low": 0.01, "high": 0.1},
+            {"name": "w", "type": "real", "low": -5.0, "high": -0.01}
+        ],
+        "step4": [
+            {"name": "C0", "type": "real", "low": 1000.0, "high": 10000},
+            {"name": "xf", "type": "real", "low": 0.8, "high": 1.2}
+        ]
+    },
+    "optimization_settings": {
+        "genetic_algorithm": {
+            "population_size": 50,
+            "num_generations": 200,
+            "mutation_rate": 0.2
+        },
+        "n_calls": {
+            "step1": 100,
+            "step2": 200,
+            "step3": 100,
+            "step4": 200
+        },
+        "algorithms": {
+            "step1": {"genetic_algorithm": 1, "least_squares": 1},
+            "step2": {"genetic_algorithm": 1, "least_squares": 1},
+            "step3": {"genetic_algorithm": 1, "least_squares": 1},
+            "step4": {"genetic_algorithm": 1, "least_squares": 1}
+        },
+        "adjust_factors": {
+            "A1_factor": 1e-5,
+            "n1_factor": 1e-5,
+            "E1_factor": 1e-5,
+            "Ah_factor": 0.15,
+            "nh_factor": 0.15,
+            "Eh_factor": 0.15,
+            "Teq_factor": 0.01,
+            "k_factor": 0.5,
+            "w_factor": 0.5
+       }
+    }
+}

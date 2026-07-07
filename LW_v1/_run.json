@@ -1,0 +1,203 @@
+{
+    "timing_parameters": {
+        "t_com": 0.0
+    },
+    "data_columns": {
+        "time": "Time(msec)",
+        "temperature": " Temperature(K)",
+        "pressure": " Pressure(bar)"
+    },
+    "file_specifications": {
+        "two_stage": {
+            "directory": "data",
+            "files": []
+        },
+        "single_stage": {
+            "directory": "data",
+            "files": [
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T854K_IDT10.5ms.csv",
+                    "idt_one": 10.5
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T873K_IDT12.8ms.csv",
+                    "idt_one": 12.8
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T834K_IDT13.6ms.csv",
+                    "idt_one": 13.6
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T857K_IDT19.2ms.csv",
+                    "idt_one": 19.2
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T841K_IDT19.4ms.csv",
+                    "idt_one": 19.4
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T857K_IDT20.9ms.csv",
+                    "idt_one": 20.9
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T864K_IDT23.5ms.csv",
+                    "idt_one": 23.5
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T845K_IDT29.0ms.csv",
+                    "idt_one": 29.0
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T830K_IDT34.4ms.csv",
+                    "idt_one": 34.4
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T852K_IDT47.1ms.csv",
+                    "idt_one": 47.1
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T835K_IDT61.1ms.csv",
+                    "idt_one": 61.1
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T813K_IDT65.2ms.csv",
+                    "idt_one": 65.2
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T808K_IDT74.9ms.csv",
+                    "idt_one": 74.9
+                }
+            ]
+        },
+        "ntc_region": {
+            "directory": "data",
+            "files": [
+                {
+                    "name": "CH3NO2_phi1.0_bar15_T841K_IDT82.3ms.csv",
+                    "idt_ntc": 82.3
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T799K_IDT137.4ms.csv",
+                    "idt_ntc": 137.4
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T821K_IDT152.4ms.csv",
+                    "idt_ntc": 152.4
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T796K_IDT175.7ms.csv",
+                    "idt_ntc": 175.7
+                },
+                {
+                    "name": "CH3NO2_phi1.0_bar30_T812K_IDT209.5ms.csv",
+                    "idt_ntc": 209.5
+                }
+            ]
+        },
+        "dp_optimization": {
+            "initial_temperature": [],
+            "initial_pressure": [],
+            "D_p_actual": []
+        }
+    },
+    "initial_parameters": {
+        "A": 0.001,
+        "n": -0.5,
+        "E": 15000,
+        "Teq": 750,
+        "k": 0.03,
+        "w": -2.0,
+        "C0": 2000,
+        "xf": 1.0
+    },
+    "parameter_spaces": {
+        "step1": [
+            {
+                "name": "A",
+                "type": "real",
+                "low": 1e-08,
+                "high": 0.01
+            },
+            {
+                "name": "n",
+                "type": "real",
+                "low": -3.0,
+                "high": -0.05
+            },
+            {
+                "name": "E",
+                "type": "real",
+                "low": 1000,
+                "high": 50000
+            }
+        ],
+        "step2": [
+            {
+                "name": "Teq",
+                "type": "real",
+                "low": 600,
+                "high": 900
+            },
+            {
+                "name": "k",
+                "type": "real",
+                "low": 0.005,
+                "high": 0.15
+            },
+            {
+                "name": "w",
+                "type": "real",
+                "low": -8.0,
+                "high": -0.01
+            }
+        ],
+        "step3": [
+            {
+                "name": "C0",
+                "type": "real",
+                "low": 500,
+                "high": 10000
+            },
+            {
+                "name": "xf",
+                "type": "real",
+                "low": 0.5,
+                "high": 1.5
+            }
+        ]
+    },
+    "optimization_settings": {
+        "genetic_algorithm": {
+            "population_size": 30,
+            "num_generations": 80,
+            "mutation_rate": 0.2
+        },
+        "n_calls": {
+            "step1": 40,
+            "step2": 30,
+            "step3": 40
+        },
+        "algorithms": {
+            "step1": {
+                "genetic_algorithm": 1,
+                "least_squares": 0
+            },
+            "step2": {
+                "genetic_algorithm": 1,
+                "least_squares": 0
+            },
+            "step3": {
+                "genetic_algorithm": 1,
+                "least_squares": 0
+            }
+        },
+        "adjust_factors": {
+            "A_factor": 0.15,
+            "n_factor": 0.15,
+            "E_factor": 0.15,
+            "Teq_factor": 0.02,
+            "k_factor": 0.5,
+            "w_factor": 0.5
+        }
+    }
+}
