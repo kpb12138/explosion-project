@@ -1,0 +1,47 @@
+# Constraint analysis configuration file
+
+# Optimized parameters folder name (required)
+# The program will automatically derive default values for other configuration items
+results_folder: "results"
+
+# JSON configuration file path (optional, default: results_folder without "_results" + ".json")
+json_config_file: "Input.json"
+
+# Temperature and pressure grouping range (positive/negative values)
+temp_range: 2.5  # K
+pressure_range: 0.5  # bar
+
+# Output settings
+# output_dir (optional, default: results_folder without "_results" + "_Constraint")
+output_dir: ""
+output_data_file: "constraint_efficiency_data.csv"
+output_plot_file: "constraint_efficiency_3d.png"
+output_2d_plot_file: "constraint_efficiency_2d.png"
+
+# Plot settings
+plot_title: "Constraint Efficiency Analysis"
+x_label: "Temperature (K)"
+y_label: "Pressure (bar)"
+z_label: "Constraint Efficiency"
+
+# IDT generate settings
+# Constraint criteria for filtering normalized efficiency data
+constraint_criteria: 0.5
+# Auto generate mode: 0 = full IDT generation logic, 1 = only generate IDT for 
+# conditions with normalized efficiency > constraint_criteria
+auto_generate_mode: 1
+# IDT generate settings if auto_generate_mode = 0
+temperature_grid: 20
+pressure_grid: 1
+# When constraint analysis was not performed, use the following settings
+temp_min: 400.0  # K
+temp_max: 900.0  # K
+pressure_min: 10.0  # bar
+pressure_max: 20.0  # bar
+
+# idt_data_file (optional, default: results_folder without "_results" + "_IDT.csv")
+idt_data_file: ""
+
+
+
+

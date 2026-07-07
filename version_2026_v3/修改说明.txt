@@ -1,0 +1,14 @@
+20260319：（version2026）
+	修复了residuals_nonreac_integral_V4.py第171行C0和xf顺序错误的问题
+
+20260321：（2026_v2）
+    优化了Step1 - step3 数据不存在时的分支逻辑，在分支中直接定义参数的后续优化范围；
+    优化了Step4：删除了IDT_1st是否存在的判断逻辑，直接继承前序步骤的参数范围；
+    删除了residuals_nonreac_integral.py中存在错误且冗余的objective_all，及residual函数
+    
+20260323:（2026_v3）
+    - 修复 GP 效率问题 ： gp_minimize 中使用 func_vals 替代重复计算，节省约50%计算时间。
+    - 修复 LS 目标函数不一致 ：添加 residuals_vector_total 函数返回加权残差向量，使 least_squares 与 GA 的 objective 定义一致，确保结果可比较。
+    - 代码整合 ：将 DeltaP_residuals 移入 residuals_nonreac_integral.py ，删除冗余的 objective_functions.py 文件。
+    - 重构 Step 4 ：移除重复的 if not idts_1st: 分支，简化代码结构
+    - 保留了计算过程中 GA单独优化的结果，最后进行所有方法的比较，取最优结果
